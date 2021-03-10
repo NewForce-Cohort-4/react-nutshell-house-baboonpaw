@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
 import "./Login.css"
 
+/* 
+Create Login component which loads a login form. 
+Upon clicking "login" button, check to see if user exists in the database. 
+If so, load application and assign that user to localStorage. 
+If not, generate pop-up to inform the user that their email is not registered.
+*/ 
 
 export const Login = props => {
+    // Initialize variables to be used in login component.
     const email = useRef()
     const password = useRef()
     const existDialog = useRef()
