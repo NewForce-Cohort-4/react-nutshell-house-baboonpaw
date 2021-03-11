@@ -11,13 +11,11 @@
   "events": [],
   "tasks": [
     {
-      "id": 1,
       "name": "Task 1",
       "completionDate": "1/1/2020",
       "completed": true
     },
     {
-      "id": 2,
       "name": "Task 2",
       "completionDate": "1/1/2021",
       "completed": true
