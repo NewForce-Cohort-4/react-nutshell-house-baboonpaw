@@ -3,7 +3,7 @@
 
 // Aaron Frankenfield
 
-import React, {useContext, useEffect} from "react"
+import React, {useContext, useEffect, useState} from "react"
 import {ArticleContext} from "./ArticleProvider"
 import {ArticleCard} from "./ArticleCard"
 import {useHistory} from "react-router-dom"
@@ -11,6 +11,7 @@ import {useHistory} from "react-router-dom"
 export const ArticleList = () => {
   // This state changes when getArticles is invoked below
   const {articles, getArticlesById} = useContext(ArticleContext)
+  const [filteredArticles, setFiltered] = useState([])
 
   const history = useHistory()
 
@@ -20,22 +21,23 @@ export const ArticleList = () => {
     getArticlesById()
   }, [])
 
+  useEffect(() => {
+    const sortArticles = articles.sort((a,b) => b.time - a.time)
+    setFiltered(sortArticles)
+  }, [articles])
+
   return (
     <>
       <h2>Articles</h2>
         {console.log("AnimalList: Render", articles)}
         {
-          articles.sort((a,b) => {
-            return b.time = a.time
-          })
-          .then(() => {
-            articles.map(article => {
+            filteredArticles.map(article => {
               console.log(article)
               return <ArticleCard key={article.id} article={article} />
             })
-          })
-          
         }
+          
+        
       <button onClick={() => {history.push("/articles/create")}}>
         New Article
       </button>
