@@ -1,3 +1,4 @@
+import React from "react";
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import { EventList } from "./events/EventsList"
@@ -9,10 +10,12 @@ import { TaskForm } from "../components/tasks/TaskForm";
 import { TaskList } from "../components/tasks/TaskList";
 import { TaskProvider } from "../components/tasks/TaskProvider";
 export default class ApplicationViews extends Component {
+import { MessageProvider } from "./Message/MessageProvider"
+import { MessageList } from "./Message/MessageList"
 
-  render() {
-    return (
-      <React.Fragment>
+import { TaskForm } from "./tasks/TaskForm";
+import { TaskList } from "./tasks/TaskList";
+import { TaskProvider } from "./tasks/TaskProvider";
 
         <Route
           exact path="/" render={props => {
@@ -70,4 +73,23 @@ export default class ApplicationViews extends Component {
       </React.Fragment>
     );
   }
+  
+export const ApplicationViews = () => {
+  return (
+    <>
+        {/* Render the animal list when http://localhost:3000/messages */}
+        <MessageProvider>
+            <Route exact path="/messages">
+                <MessageList />
+            </Route>
+        </MessageProvider>
+        <TaskProvider>
+            <Route exact path="/tasks">
+                <TaskForm/> 
+                <TaskList />
+            </Route>
+        </TaskProvider>
+    </>
+  )
 }
+
