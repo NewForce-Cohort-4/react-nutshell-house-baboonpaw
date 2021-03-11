@@ -3,22 +3,23 @@ import { useHistory } from "react-router-dom"
 import "./Login.css"
 
 export const Register = (props) => {
+    // Initialize variables
     const firstName = useRef()
     const lastName = useRef()
     const email = useRef()
-    const verifyPassword = useRef()
     const conflictDialog = useRef()
     const history = useHistory()
 
+    // Declare function to check if email is associated with an existing account
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(res => res.json())
             .then(user => !!user.length)
     }
 
+    // Declare a function to register new users
     const handleRegister = (e) => {
         e.preventDefault()
-
 
         existingUserCheck()
             .then((userExists) => {
