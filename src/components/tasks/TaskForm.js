@@ -3,6 +3,8 @@ import { TaskContext } from "./TaskProvider";
 
 import { useHistory, useParams } from "react-router-dom";
 
+
+//Builds form to allow user to create a new object for tasks, saves task to database
 export const TaskForm = () => {
   const { addTask, getTaskById, updateTask,getTasks } = useContext(TaskContext);
 

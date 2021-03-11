@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TaskContext } from "./TaskProvider";
 
+//Gets tasks from database, maps over tasks to render to page
 export const TaskList = () => {
 
   const [taskToEditId, setTaskToEditId] = useState(0)
