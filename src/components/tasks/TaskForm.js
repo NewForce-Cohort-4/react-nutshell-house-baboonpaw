@@ -26,16 +26,22 @@ export const TaskForm = () => {
     //set the property to the new value
     newTask[event.target.name] = event.target.value;
     //update state
-    setTask(newTask);
+   setTask(newTask);
+    
   };
 
   const handleSaveTask = () => {
-        addTask({
-          name: task.name,
-          completionDate: task.completionDate,
-          completed: false
-        })
-        setShowForm(false)
+    if (task.name && task.completionDate) {
+      addTask({
+        name: task.name,
+        completionDate: task.completionDate,
+        completed: false,
+      });
+      setShowForm(false);
+      setTask({})
+    } else{
+      alert("Fill out both fields")
+    }
     }
  
     const handleShowForm = () => {

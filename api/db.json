@@ -11,40 +11,16 @@
   "events": [],
   "tasks": [
     {
-      "id": 1,
       "name": "Task 1",
       "completionDate": "1/1/2021",
-      "completed": true
+      "completed": false,
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Finish Task",
-      "completionDate": "1/1/2021",
-      "completed": true
-    },
-    {
-      "id": 3,
-      "name": "Finish Task",
+      "name": "Task 2",
       "completionDate": "1/1/2020",
-      "completed": true
-    },
-    {
-      "id": 4,
-      "name": "Finish Task",
-      "completionDate": "1/1/2020",
-      "completed": true
-    },
-    {
-      "id": 5,
-      "name": "Finish Task",
-      "completionDate": "1/1/2019",
-      "completed": true
-    },
-    {
-      "id": 6,
-      "name": "Task 1",
-      "completionDate": "1/1/2021",
-      "completed": true
+      "completed": false,
+      "id": 2
     }
   ],
   "messages": []
