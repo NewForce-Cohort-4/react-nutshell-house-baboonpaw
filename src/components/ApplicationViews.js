@@ -1,22 +1,18 @@
-import React from "react";
-import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
 import { EventList } from "./events/EventsList"
-import { EventCard } from "./events/Events";
 import { EventProvider } from "../components/events/EventProvider"
 import { EventForm } from "../components/events/EventsForm"
 
 import { TaskForm } from "../components/tasks/TaskForm";
 import { TaskList } from "../components/tasks/TaskList";
 import { TaskProvider } from "../components/tasks/TaskProvider";
-export default class ApplicationViews extends Component {
 import { MessageProvider } from "./Message/MessageProvider"
 import { MessageList } from "./Message/MessageList"
 
-import { TaskForm } from "./tasks/TaskForm";
-import { TaskList } from "./tasks/TaskList";
-import { TaskProvider } from "./tasks/TaskProvider";
-
+export const ApplicationViews = () => {
+  return (
+    <>
         <Route
           exact path="/" render={props => {
             return null
@@ -38,12 +34,12 @@ import { TaskProvider } from "./tasks/TaskProvider";
           }}
         />
 
-        <Route
-          path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
-          }}
-        />
+        <MessageProvider>
+            <Route exact path="/messages">
+                <MessageList />
+            </Route>
+        </MessageProvider>
+      
       <TaskProvider>
         <Route
           path="/tasks" render={props => {
@@ -70,26 +66,9 @@ import { TaskProvider } from "./tasks/TaskProvider";
           }}
         />
       </EventProvider>
-      </React.Fragment>
-    );
-  }
-  
-export const ApplicationViews = () => {
-  return (
-    <>
-        {/* Render the animal list when http://localhost:3000/messages */}
-        <MessageProvider>
-            <Route exact path="/messages">
-                <MessageList />
-            </Route>
-        </MessageProvider>
-        <TaskProvider>
-            <Route exact path="/tasks">
-                <TaskForm/> 
-                <TaskList />
-            </Route>
-        </TaskProvider>
-    </>
-  )
-}
+      
+      </>
+
+  );
+ }
 
