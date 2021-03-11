@@ -13,6 +13,15 @@ export const ArticleProvider = (props) => {
     .then(setArticles)
   }
 
+  const id = localStorage.getItem("nutshell_user")
+
+  const getArticlesById = () => {
+
+    return fetch(`http://localhost:8088/articles?userId=${id}`)
+      .then(res => res.json())
+      .then(setArticles)
+  }
+
   const addArticle = articleObj => {
     return fetch("http://localhost:8088/articles", {
         method: "POST",
@@ -21,13 +30,13 @@ export const ArticleProvider = (props) => {
         },
         body: JSON.stringify(articleObj)
     })
-    .then(getArticles)
+    .then(response => response.json())
   } 
 
   // you return a context provider which has the articles state, getArticles function. This allows any child elements to access them.
   return (
     <ArticleContext.Provider value={{
-      articles, getArticles, addArticle
+      articles, getArticles, addArticle, getArticlesById
     }}>
       {props.children}
     </ArticleContext.Provider>
