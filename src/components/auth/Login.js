@@ -13,16 +13,17 @@ If not, generate pop-up to inform the user that their email is not registered.
 export const Login = props => {
     // Initialize variables to be used in login component.
     const email = useRef()
-    const password = useRef()
     const existDialog = useRef()
     const history = useHistory()
 
+    // Declare a function to check if the user logging in has an existing account
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(res => res.json())
             .then(user => user.length ? user[0] : false)
     }
 
+    // Declare a function to login existing users and inform non-existing users to register
     const handleLogin = (e) => {
         e.preventDefault()
 
@@ -37,6 +38,7 @@ export const Login = props => {
             })
     }
 
+    // return JSX for the login form
     return (
         <main className="container--login">
             <dialog className="dialog dialog--auth" ref={existDialog}>

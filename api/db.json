@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "email": "wrharrison23@gmail.com",
+      "firstName": "Wes",
+      "lastName": "Harrison",
+      "id": 1
+    }
+  ],
+  "articles": [],
+  "events": [],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Bill",
+      "completionDate": "1/1/2021",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "name": "Task 1",
+      "completionDate": "1/1/2019",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "name": "Task 2",
+      "completionDate": "1/1/2020",
+      "completed": true
+    }
+  ],
+  "messages": []
+}
