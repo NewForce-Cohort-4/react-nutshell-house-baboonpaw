@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TaskContext } from "./TaskProvider";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //Gets tasks from database, maps over tasks to render to page
 export const TaskList = () => {
   const [taskToEditId, setTaskToEditId] = useState(0);
   const [task, setTask] = useState({});
   const { tasks, getTasks, updateTask, getTaskById } = useContext(TaskContext);
+  const [showCompleted, setShowCompleted] = useState(false);
 
   const handleControlledInputChange = (event) => {
     const newTask = { ...task };
@@ -34,12 +36,26 @@ export const TaskList = () => {
       id: task.id,
       name: task.name,
       completionDate: task.completionDate,
-      completed: true,
+      completed: !task.completed,
     }).then(getTasks);
   };
 
+  const handleCompletedToggle = () => {
+    setShowCompleted(!showCompleted)
+    getTasks()
+  }
+
   return (
     <div className="tasks">
+      <button
+        className="btn btn-primary"
+        onClick={(event) => {
+          event.preventDefault(); // Prevent browser from submitting the form and refreshing the page
+          handleCompletedToggle();
+        }}
+      >
+        {showCompleted ? <>Show To-Do List</> : <>Show Completed Tasks</>}
+      </button>
       {tasks.map((task) => {
         if (task.id === taskToEditId) {
           return (
@@ -87,25 +103,68 @@ export const TaskList = () => {
               </button>
             </form>
           );
-        } else if (task.completed === false) {
+        } else if (showCompleted === false && task.completed === false) {
           return (
-            <section className="task">
+            <section className="card text-justify text-center">
               <h3 className="task__name">{task.name}</h3>
               <div className="task_date">
                 <strong>Completion Date:</strong> {task.completionDate}
               </div>
-              <input
-                type="checkbox"
-                id="completed"
-                name="completed"
-                onChange={() => {
-                  console.log(task.id);
+              <div className="checkbox">
+                <input
+                  type="checkbox"
+                  id="completed"
+                  name="completed"
+                  onChange={() => {
+                    console.log(task.id);
+                    getTaskById(task.id).then((task) => {
+                      setTask(task);
+                      handleCheckBox(task);
+                    });
+                  }}
+                />
+                <label class="form-check-label" htmlFor="completed">
+                  {task.completed ? <>Mark Incomplete</> : <>Mark Completed</>}
+                </label>
+              </div>
+
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  setTaskToEditId(task.id);
                   getTaskById(task.id).then((task) => {
                     setTask(task);
-                    handleCheckBox(task);
                   });
                 }}
-              />
+              >
+                Edit Task
+              </button>
+            </section>
+          );
+        } else if (showCompleted === true && task.completed === true) {
+          return (
+            <section className="card text-justify text-center">
+              <h3 className="task__name">{task.name}</h3>
+              <div className="task_date">
+                <strong>Completion Date:</strong> {task.completionDate}
+              </div>
+              <div className="checkbox">
+                <input
+                  type="checkbox"
+                  id="completed"
+                  name="completed"
+                  onChange={() => {
+                    console.log(task.id);
+                    getTaskById(task.id).then((task) => {
+                      setTask(task);
+                      handleCheckBox(task);
+                    });
+                  }}
+                />
+                <label class="form-check-label" htmlFor="completed">
+                  {task.completed ? <>Mark Incomplete</> : <>Mark Completed</>}
+                </label>
+              </div>
 
               <button
                 className="btn btn-primary"
