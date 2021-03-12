@@ -1,3 +1,21 @@
-.tasks{
+@import url('https://fonts.googleapis.com/css2?family=Blinker:wght@300&display=swap');
+
+/* .tasks{
   background-color: darkgrey;
+} */
+* {
+  font-family: 'Blinker', sans-serif;
+}
+
+
+#add-task-btn {
+  font-size: 1.3em   !important;
+}
+
+.edit-btn {
+  background-color:rgba(89, 159, 216, 0.938);
+}
+
+.completed-btn {
+  background-color: rgba(89, 159, 216, 0.938);
 }

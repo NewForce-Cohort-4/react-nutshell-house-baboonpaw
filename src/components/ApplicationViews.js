@@ -10,18 +10,18 @@ import { TaskProvider } from "./tasks/TaskProvider";
 export const ApplicationViews = () => {
   return (
     <>
-        <MessageProvider>
-            <Route exact path="/messages">
-                <MessageList />
-            </Route>
-        </MessageProvider>
-        <TaskProvider>
-            <Route exact path="/tasks">
-                <TaskForm /> 
-                <TaskList />
-            </Route>
-        </TaskProvider>
+      <MessageProvider>
+        <Route exact path="/messages">
+          <MessageList />
+        </Route>
+      </MessageProvider>
+      <TaskProvider>
+        <Route exact path="/tasks">
+          <TaskList />
+          <TaskForm />
+        </Route>
+      </TaskProvider>
     </>
-  )
+  );
 }
 
