@@ -4,7 +4,7 @@ import "./Events.css"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const EventForm = () => {
-    const { addEvent } = useContext(EventContext)
+    const { addEvent, getEvents } = useContext(EventContext)
 
     //Define the intial state of the form inputs with useState()
 
@@ -21,9 +21,9 @@ export const EventForm = () => {
     Reach out to the world and get customers state
     and locations state on initialization.
     */
-    useEffect(() => {
-        getEvents()
-      }, [])
+    //useEffect(() => {
+       // getEvents()
+     // }, [])
 
       //when a field changes, update state. The return will re-render and display based on the values in state
     //Controlled component
@@ -44,15 +44,16 @@ export const EventForm = () => {
 
           //invoke addEvent passing event as an argument.
           //once complete, change the url and display the event list
-          if ( eventId ){
-              addEvent({
-                  name: event.name,
-                  date: event.date,
-                  location: event.location
-              })
+          if ( eventId === 0){
+              window.alert("Please enter an event")}
+            else{
+            //invoke addEvent passing events as an argument.
+            //once complete, change the url and display the event list
+            addEvent(events)
           .then(() => history.push("/events"))
           }
       }
+    
 
       return (
         <form className="eventForm">
@@ -76,12 +77,9 @@ export const EventForm = () => {
                 </div>
             </fieldset>
             <button className="btn btn-primary"
-              disabled={isLoading}
-              onClick={event => {
-                  event.preventDefault()
-                  handleClickSaveEvent()
-              }}>
-                {<>Save Employee</> : <>Add Employee</>}
+              //disabled={isLoading}
+              onClick={handleClickSaveEvent}>
+                Save Event
             </button>
         </form>
       )

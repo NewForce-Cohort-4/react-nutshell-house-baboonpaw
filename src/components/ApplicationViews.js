@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import { EventList } from "./events/EventsList"
 import { EventProvider } from "../components/events/EventProvider"
-import { EventForm } from "../components/events/EventsForm"
+import { EventForm } from "../components/events/EventForm"
 
 import { TaskForm } from "../components/tasks/TaskForm";
 import { TaskList } from "../components/tasks/TaskList";
@@ -59,8 +59,8 @@ export const ApplicationViews = () => {
           path="/events" render={props => {
             return (
             <>
-            <EventList />
             <EventForm />
+            <EventList />
             </>
             )
           }}

@@ -21,15 +21,15 @@ export const EventProvider = (props) => {
         .then(setEvents)
     }
 
-    const addEvent = eventObj => {
+    const addEvent = eventsObj => {
         return fetch("http://localhost:8088/events", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(eventObj)
+            body: JSON.stringify(eventsObj)
         })
-        .then(getEvents)
+        .then(response => response.json())
     }
 
     return (

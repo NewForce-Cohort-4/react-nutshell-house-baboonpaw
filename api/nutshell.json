@@ -1,19 +1,33 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "firstName": "Sophia",
-            "lastName": "Spaulding",
-            "email": "me@me.com"
-        }
-    ],
-    
-    "events": [
-        {
-            "id":1,
-            "name": "Aaron's Party",
-            "date": "April",
-            "location": "Movies"
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Sophia",
+      "lastName": "Spaulding",
+      "email": "me@me.com"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "name": "Aaron's Party",
+      "date": "April",
+      "location": "Movies"
+    },
+    {
+      "name": "",
+      "date": "",
+      "location": "",
+      "id": 2
+    }
+  ],
+  "tasks": [
+    {
+      "name": "drink alcohol",
+      "completionDate": "tonight",
+      "completed": false,
+      "id": 1
+    }
+  ],
+  "messages": []
 }

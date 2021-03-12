@@ -22,7 +22,7 @@ export const EventList = () => {
             Add Event
         </button>
     <div className="events">
-      {console.log("EventList: Render", events)}
+      {/* {console.log("EventList: Render", events)} */}
       {events.map(event => {
          console.log(event)
          return <EventCard key={event.id} event={event} />

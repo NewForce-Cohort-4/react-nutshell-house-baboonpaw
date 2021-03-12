@@ -1,6 +1,6 @@
 .events {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: column;
     justify-content: space-between;
   }
   
