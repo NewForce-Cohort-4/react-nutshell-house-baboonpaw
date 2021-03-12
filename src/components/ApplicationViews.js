@@ -10,7 +10,6 @@ import { TaskProvider } from "./tasks/TaskProvider";
 export const ApplicationViews = () => {
   return (
     <>
-        {/* Render the animal list when http://localhost:3000/messages */}
         <MessageProvider>
             <Route exact path="/messages">
                 <MessageList />
@@ -18,7 +17,7 @@ export const ApplicationViews = () => {
         </MessageProvider>
         <TaskProvider>
             <Route exact path="/tasks">
-                <TaskForm/> 
+                <TaskForm /> 
                 <TaskList />
             </Route>
         </TaskProvider>

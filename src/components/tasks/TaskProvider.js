@@ -25,13 +25,6 @@ export const TaskProvider = (props) => {
     .then(getTasks)
   };
 
-  /*
-        You return a context provider which has the
-        `tasks` state, `getTasks` function,
-        and the `addTask` function as keys. This
-        allows any child elements to access them.
-    */
-
   const getTaskById = (id) => {
     return fetch(
       `http://localhost:8088/tasks/${id}`
@@ -53,18 +46,6 @@ export const TaskProvider = (props) => {
       body: JSON.stringify(task),
     }).then(getTasks);
   };
-
-  // const updateStatus = (taskId, completed) => {
-  //   return fetch(`http://localhost:8088/tasks/${taskId}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       completed: completed, // we are changing the completed status
-  //     }),
-  //   });
-  // };
 
   return (
     <TaskContext.Provider
