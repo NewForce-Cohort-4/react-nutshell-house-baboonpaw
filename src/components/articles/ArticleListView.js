@@ -10,10 +10,12 @@ import {useHistory} from "react-router-dom"
 
 export const ArticleList = () => {
   // This state changes when getArticles is invoked below
-  const {articles, getArticlesById} = useContext(ArticleContext)
+  const {articles, getArticlesById, deleteArticle} = useContext(ArticleContext)
   const [filteredArticles, setFiltered] = useState([])
 
   const history = useHistory()
+
+ 
 
   // useEffect - empty dependency array - useEffect only runs after first render
   useEffect(() => {
@@ -25,6 +27,11 @@ export const ArticleList = () => {
     const sortArticles = articles.sort((a,b) => b.time - a.time)
     setFiltered(sortArticles)
   }, [articles])
+  
+  const handleDeletion = (articleId) => {
+    return () => deleteArticle(articleId).then(() =>
+    history.push("/articles"))
+  }
 
   return (
     <>
@@ -33,15 +40,14 @@ export const ArticleList = () => {
         {
             filteredArticles.map(article => {
               console.log(article)
-              return <ArticleCard key={article.id} article={article} />
-            })
+              return (<ArticleCard key={article.id} article={article} deleteFn={handleDeletion(article.id)}
+                /> )
+              })
         }
           
-        
       <button onClick={() => {history.push("/articles/create")}}>
         New Article
       </button>
     </>
   )
-
 }
