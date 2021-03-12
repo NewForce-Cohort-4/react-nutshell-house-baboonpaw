@@ -115,6 +115,7 @@ export const TaskList = () => {
                   type="checkbox"
                   id="completed"
                   name="completed"
+                  defaultChecked={task.completed}
                   onChange={() => {
                     console.log(task.id);
                     getTaskById(task.id).then((task) => {
@@ -153,6 +154,7 @@ export const TaskList = () => {
                   type="checkbox"
                   id="completed"
                   name="completed"
+                  defaultChecked={task.completed}
                   onChange={() => {
                     console.log(task.id);
                     getTaskById(task.id).then((task) => {
