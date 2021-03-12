@@ -67,53 +67,53 @@ export const TaskForm = () => {
 
   if(showForm === true) {
     return (
-       <form className="taskForm">
-      <h2 className="taskForm__title">New Task</h2>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="taskName">Task name: </label>
-          <input
-            type="text"
-            id="taskName"
-            name="name"
-            required
-            autoFocus
-            className="form-control"
-            placeholder="Task name"
-            onChange={handleControlledInputChange}
-            defaultValue={task.name}
-          />
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="taskBreed">Completion Date: </label>
-          <input
-            type="text"
-            id="taskDate"
-            name="completionDate"
-            required
-            autoFocus
-            className="form-control"
-            placeholder="Completion date"
-            onChange={handleControlledInputChange}
-            defaultValue={task.completionDate}
-          />
-        </div>
-      </fieldset>
-      
-      <button
-        className="btn btn-primary"
-        disabled={isLoading}
-        onClick={(event) => {
-          event.preventDefault(); // Prevent browser from submitting the form and refreshing the page
-          handleSaveTask();
-        }}
-      >
-        Save Task
-      </button>
-    </form>
-    )
+      <form className="taskForm">
+        <h2 className="taskForm__title">New Task</h2>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="taskName">Task name: </label>
+            <input
+              type="text"
+              id="taskName"
+              name="name"
+              required
+              autoFocus
+              className="form-control"
+              placeholder="Task name"
+              onChange={handleControlledInputChange}
+              defaultValue={task.name}
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="taskDate">Completion Date: </label>
+            <input
+              type="text"
+              id="taskDate"
+              name="completionDate"
+              required
+              autoFocus
+              className="form-control"
+              placeholder="Completion date"
+              onChange={handleControlledInputChange}
+              defaultValue={task.completionDate}
+            />
+          </div>
+        </fieldset>
+
+        <button
+          className="btn btn-primary"
+          disabled={isLoading}
+          onClick={(event) => {
+            event.preventDefault(); // Prevent browser from submitting the form and refreshing the page
+            handleSaveTask();
+          }}
+        >
+          Save Task
+        </button>
+      </form>
+    );
 
   } else {
     return (
