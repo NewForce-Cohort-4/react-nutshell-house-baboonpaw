@@ -10,34 +10,32 @@ import { TaskList } from "./tasks/TaskList";
 import { TaskProvider } from "./tasks/TaskProvider";
 
 export const ApplicationViews = () => {
-
- 
-    return (
+  return (
       <>
 
-        <ArticleProvider>
-          <Route exact path="/articles">
-            <ArticleList />
+      <ArticleProvider>
+        <Route exact path="/articles">
+          <ArticleList />
+        </Route>
+        <Route exact path="/articles/create">
+          <ArticleForm />
+        </Route>
+      </ArticleProvider>
+        {/* Render the animal list when http://localhost:3000/messages */}
+      <MessageProvider>
+          <Route exact path="/messages">
+              <MessageList />
           </Route>
-          <Route exact path="/articles/create">
-            <ArticleForm />
+      </MessageProvider>
+      <TaskProvider>
+          <Route exact path="/tasks">
+              <TaskForm /> 
+              <TaskList />
           </Route>
-        </ArticleProvider>
-         {/* Render the animal list when http://localhost:3000/messages */}
-         <MessageProvider>
-            <Route exact path="/messages">
-                <MessageList />
-            </Route>
-        </MessageProvider>
-        <TaskProvider>
-            <Route exact path="/tasks">
-                <TaskForm/> 
-                <TaskList />
-            </Route>
-        </TaskProvider>
-      </>
-    )
-  }  
+      </TaskProvider>
+    </>
+  )
+}  
 
 
 
