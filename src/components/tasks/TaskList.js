@@ -124,7 +124,7 @@ export const TaskList = () => {
                     });
                   }}
                 />
-                <label class="form-check-label" htmlFor="completed">
+                <label className="form-check-label" htmlFor="completed">
                   {task.completed ? <>Mark Incomplete</> : <>Mark Completed</>}
                 </label>
               </div>

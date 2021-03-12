@@ -11,7 +11,7 @@ main {
 
 /* Restrict the container that houses the list of messages. Use Column-Reverse to force the browser to load the scrolling div to the bottom first so that recent messages and new messages appear at the bottom. */
 .messages {
-    height: 20vh;
+    height: 40vh;
     width: 50vw;
     border: 1px solid black;
     border-radius: 10px;
@@ -34,4 +34,12 @@ main {
 /* Forces the message input to take up as much width as possible */
 .form-group {
     width: 100%;
+}
+
+.flex-container-inLine {
+    display: flex
+}
+
+.modifyMessage {
+    width: 10%
 }
