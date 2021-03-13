@@ -20,6 +20,9 @@ export const ApplicationViews = () => {
         <Route exact path="/articles/create">
           <ArticleForm />
         </Route>
+        <Route exact path="/articles/edit/:articleId(\d+)">
+          <ArticleForm />
+        </Route>
       </ArticleProvider>
         {/* Render the animal list when http://localhost:3000/messages */}
       <MessageProvider>

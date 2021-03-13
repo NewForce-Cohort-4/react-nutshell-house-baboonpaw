@@ -40,10 +40,21 @@ export const ArticleProvider = (props) => {
     .then(getArticlesById)
   }
 
+  const updateArticle = articleId => {
+    return fetch(`http://localhost:8088/articles/${articleId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(articleId)
+    })
+    .then(getArticlesById)
+  }
+
   // you return a context provider which has the articles state, getArticles function. This allows any child elements to access them.
   return (
     <ArticleContext.Provider value={{
-      articles, getArticles, addArticle, getArticlesById, deleteArticle
+      articles, getArticles, addArticle, getArticlesById, deleteArticle, updateArticle
     }}>
       {props.children}
     </ArticleContext.Provider>
