@@ -4,84 +4,131 @@ import "./Events.css"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const EventForm = () => {
-    const { addEvent, getEvents } = useContext(EventContext)
+    const { addEvent, getEvents, getEventById } = useContext(EventContext)
 
     //Define the intial state of the form inputs with useState()
 
-    const [events, setEvents] = useState({
-        name: "",
-        date: "",
-        location: ""
-      }); 
-
-      const { eventId } = useParams()
-      const history = useHistory();
+    const [event, setEvent] = useState({}); 
+    //wait for data before button is active
+    const [isLoading, setIsLoading] = useState(true);
+    const [showForm, setShowForm] = useState(false)
+    const { eventId } = useParams()
+    const history = useHistory();
 
       /*
     Reach out to the world and get customers state
     and locations state on initialization.
     */
-    //useEffect(() => {
-       // getEvents()
-     // }, [])
+    useEffect(() => {
+       getEvents()
+       .then(() => {
+           if (eventId) {
+               getEventById(eventId)
+               .then((event) => {
+                   setEvent(event);
+                   setIsLoading(false);
+               });
+           } else {
+               setIsLoading(false)
+           }
+       });
+     }, [])
 
       //when a field changes, update state. The return will re-render and display based on the values in state
     //Controlled component
-    const handleControlledInputChange = (event) => {
+    const handleControlledInputChange = (e) => {
         /* When changing a state object or array,
         always create a copy, make changes, and then set state.*/
         const newEvent = { ...event }
-        /* Animal is an object with properties.
+        /* event is an object with properties.
         Set the property to the new value
         using object bracket notation. */
-        newEvent[event.target.id] = event.target.value
+        newEvent[e.target.id] = e.target.value
         // update state
-        setEvents(newEvent)
+        setEvent(newEvent)
     }
 
-    const handleClickSaveEvent = (event) => {
-        event.preventDefault() //Prevents the browser from submitting the form
+    const handleSaveEvent = () => {
+        addEvent({
+        name: event.name,
+        date: event.date,
+        location: event.location
+    }).then(() => {
+      setShowForm(false);
+    });
+    };
 
-          //invoke addEvent passing event as an argument.
-          //once complete, change the url and display the event list
-          if ( eventId === 0){
-              window.alert("Please enter an event")}
-            else{
+    const handleClickSaveEvent = () => {
+          if (event.name && event.date && event.location){
+              addEvent({
+                  id: showForm,
+                  name: event.name,
+                  date: event.date,
+                  location: event.location
+              });
+              setShowForm(false);
+              setEvent({})
+              
+          }
+          else{
             //invoke addEvent passing events as an argument.
             //once complete, change the url and display the event list
-            addEvent(events)
+            addEvent(event)
           .then(() => history.push("/events"))
           }
-      }
+      
+    }
     
+    const handleShowForm = () => {
+        setShowForm(true)
+      }
 
+    if(showForm === true) {
       return (
         <form className="eventForm">
             <h2 className="eventForm__title">New Event</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Event name:</label>
-                    <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event name" value={events.name}/>
+                    <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event name" value={event.name}/>
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">Date: </label>
-                    <input type="text" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Date" value={events.date}/>
+                    <input type="text" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Date" value={event.date}/>
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">Location: </label>
-                    <input type="text" id="location" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Location" value={events.location}/>
+                    <input type="text" id="location" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Location" value={event.location}/>
                 </div>
             </fieldset>
+            
             <button className="btn btn-primary"
-              //disabled={isLoading}
-              onClick={handleClickSaveEvent}>
+              disabled={isLoading}
+              onClick={(event) => {
+                  event.preventDefault();
+                  handleSaveEvent();
+              }}>
                 Save Event
             </button>
         </form>
-      )
+      );
+    } 
+    else {
+        return (
+            <div>
+                <button className ="btn btn-primary" 
+                onClick={(event) => {
+                    event.preventDefault();
+                    handleShowForm();
+                }}>
+                    Add Event
+                </button>
+            </div>
+        )
+    }
 
 }

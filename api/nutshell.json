@@ -15,18 +15,24 @@
       "location": "Movies"
     },
     {
-      "name": "",
-      "date": "",
-      "location": "",
+      "name": "Break",
+      "date": "4/5/9",
+      "location": "Home",
       "id": 2
+    },
+    {
+      "name": "Ash's birthday",
+      "date": "4/3/21",
+      "location": "Home",
+      "id": 3
     }
   ],
   "tasks": [
     {
+      "id": 1,
       "name": "drink alcohol",
       "completionDate": "tonight",
-      "completed": false,
-      "id": 1
+      "completed": true
     }
   ],
   "messages": []

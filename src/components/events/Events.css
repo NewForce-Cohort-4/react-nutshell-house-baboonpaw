@@ -1,12 +1,21 @@
 .events {
-    display: flex;
-    flex-wrap: column;
+    display: column;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
   
-  .event {
+  .reguler {
       flex-basis: 28%;
-      margin: 1em;
+      margin: 2em;
       padding: 1em;
-      border: 1px solid goldenrod;
+      border: 1px solid rgb(160, 127, 197);
   }
+
+  .boldEvent {
+    flex-basis: 30%;
+    margin: 1em;
+    padding: 1em;
+    border: 2px solid rgb(104, 103, 101);
+    background-color: rgb(179, 245, 223);
+    font-weight: bold;
+}

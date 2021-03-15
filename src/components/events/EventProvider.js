@@ -32,9 +32,15 @@ export const EventProvider = (props) => {
         .then(response => response.json())
     }
 
+    
+    const getEventById = (id) => {
+        return fetch(`http://localhost:8088/events/${id}`)
+            .then(res => res.json())
+    }
+
     return (
         <EventContext.Provider value={{ //.provider is a property that runs on the AnimalContext
-            events, getEvents, addEvent //like the toolbelt for the provider - all the things listed are what the provider is capable of 
+            events, getEvents, addEvent, getEventById //like the toolbelt for the provider - all the things listed are what the provider is capable of 
         }}>
             {props.children}
         </EventContext.Provider>
