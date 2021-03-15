@@ -30,6 +30,7 @@ export const EventProvider = (props) => {
             body: JSON.stringify(eventsObj)
         })
         .then(response => response.json())
+        .then(getEvents)
     }
 
     

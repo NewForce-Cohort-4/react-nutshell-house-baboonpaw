@@ -52,7 +52,8 @@ export const ArticleForm = () => {
           id: article.id,
           title: article.title,
           synopsis: article.synopsis,
-          url: article.url
+          url: article.url,
+          time: parseInt(Date.now())
         })
         .then(() => history.push("/articles/"))
       } else {
