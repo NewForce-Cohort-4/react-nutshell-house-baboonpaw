@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Sophia",
+      "lastName": "Spaulding",
+      "email": "me@me.com"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "name": "Aaron's Party",
+      "date": "April",
+      "location": "Movies"
+    },
+    {
+      "name": "Break",
+      "date": "4/5/9",
+      "location": "Home",
+      "id": 2
+    },
+    {
+      "name": "Ash's birthday",
+      "date": "4/3/21",
+      "location": "Home",
+      "id": 3
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "drink alcohol",
+      "completionDate": "tonight",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "name": "Break",
+      "completionDate": "tonight",
+      "completed": true
+    }
+  ],
+  "messages": []
+}
