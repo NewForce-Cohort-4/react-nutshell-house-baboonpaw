@@ -36,6 +36,7 @@ export const MessageList = () => {
                     <MessageForm existingMessage={{message: "", userId:+localStorage.getItem("nutshell_user")}} />
                 </div>
             </main>
+            
         </>
     )
 }
