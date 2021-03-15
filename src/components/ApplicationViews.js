@@ -12,8 +12,7 @@ import { TaskProvider } from "./tasks/TaskProvider";
 
 export const ApplicationViews = () => {
   return (
-      <>
-
+    <>
       <ArticleProvider>
         <Route exact path="/articles">
           <ArticleList />
@@ -29,20 +28,20 @@ export const ApplicationViews = () => {
           <ArticleDetails />
         </Route>
       </ArticleProvider>
-        {/* Render the animal list when http://localhost:3000/messages */}
+      {/* Render the animal list when http://localhost:3000/messages */}
       <MessageProvider>
-          <Route exact path="/messages">
-              <MessageList />
-          </Route>
+        <Route exact path="/messages">
+          <MessageList />
+        </Route>
       </MessageProvider>
       <TaskProvider>
-          <Route exact path="/tasks">
-              <TaskForm /> 
-              <TaskList />
-          </Route>
+        <Route exact path="/tasks">
+          <TaskList />
+          <TaskForm />
+        </Route>
       </TaskProvider>
     </>
-  )
+  );
 }  
 
 
