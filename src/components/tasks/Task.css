@@ -3,10 +3,12 @@
 /* .tasks{
   background-color: darkgrey;
 } */
-.tasks, .taskForm {
-  font-family: 'Blinker', sans-serif;
-}
 
+
+.tasks, .taskForm, .taskContainer {
+  font-family: 'Blinker', sans-serif;
+  background-color: #E3E2DF ;
+}
 
 #add-task-btn {
   font-size: 1.3em   !important;
@@ -18,6 +20,7 @@
 
 .completed-btn {
   background-color: rgba(89, 159, 216, 0.938);
+  margin-top: 1em;
 }
 
 .progressSpan {
@@ -44,4 +47,10 @@
 .progressDiv {
   margin: 1em 0;
   text-justify: center;
+}
+
+.taskMainContainer {
+  height: 100vh;
+  width: 100vw;
+  background-color: #E3E2DF;
 }
