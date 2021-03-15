@@ -44,6 +44,24 @@ export const TaskList = () => {
     getTasks()
   }
 
+  const calculateCompleted = () => {
+    let completed = []
+    let value 
+    tasks.forEach((task) => {
+      
+      if(task.completed === true) {
+        completed.push(task)
+      }
+      
+    })
+    console.log(completed);
+    let completedValue = completed.length
+    let tasksValue = tasks.length
+    value = (completedValue / tasksValue) * 100
+    return value
+  }
+
+
   return (
     <div className="tasks">
       <button
@@ -55,6 +73,16 @@ export const TaskList = () => {
       >
         {showCompleted ? <>Show To-Do List</> : <>Show Completed Tasks</>}
       </button>
+      <div className="progressDiv" style={{ width: "100%" }}>
+        <label for="taskProgress" className="progressLabel">Task progress: </label>
+        <progress
+          id="taskProgress"
+          value={calculateCompleted()}
+          max="100"
+          style={{ width: "85%" }}
+        ></progress>
+        <span className="progressSpan">{Math.round(calculateCompleted())}%</span>
+      </div>
       {tasks.map((task) => {
         if (task.id === taskToEditId) {
           return (
