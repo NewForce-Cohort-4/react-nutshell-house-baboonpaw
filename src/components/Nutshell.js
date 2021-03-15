@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import NavBar from "./nav/NavBar";
-import { ApplicationViews } from "./ApplicationViews";
+import {ApplicationViews} from "./ApplicationViews";
 import "./Nutshell.css";
 
 export const Nutshell = () => (
