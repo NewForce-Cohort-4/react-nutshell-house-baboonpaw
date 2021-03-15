@@ -24,6 +24,15 @@ class NavBar extends Component {
                         <Link className="nav-link" to="/events">Events</Link>
                     </li>
                 </ul>
+                <span className="navbar-text">
+                    <ul className="nav nav-pills nav-fill">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/login" 
+                            >Logout</Link>
+                            {/* onClick={localStorage.removeItem("nutshell_user")} */}
+                        </li>
+                    </ul>
+                </span>
             </nav>
         )
     }

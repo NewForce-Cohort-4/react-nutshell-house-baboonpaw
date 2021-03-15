@@ -1,23 +1,14 @@
-import React, { useState, useContext, useEffect } from "react"
-import { useHistory } from 'react-router-dom';
+import React, { useState, useContext } from "react"
 import { MessageContext } from "./MessageProvider"
 import "./Message.css"
 
 // Create "MessageForm" component to generate a new message field such that USER can add a new message to the public forum
-export const MessageForm = () => {
+export const MessageForm = ({existingMessage, setEditMessageId}) => {
     // import functions from MessageProvider.js
-    const { addMessage, getMessages } = useContext(MessageContext)
+    const { addMessage, getMessages, editMessage } = useContext(MessageContext)
 
     // Set initial State
-    const [message, setMessage] = useState({
-        message: "",
-        userId: parseInt(localStorage.getItem("nutshell_user"))
-    });
-
-    // Use the useEffect hook to invoke the MessageProvider API GET call to retrieve messages data
-    useEffect(() => {
-        getMessages()
-    },[])
+    const [message, setMessage] = useState(existingMessage);
 
     // Declare a function which will monitor typing events in the new message input and update State
     const handleControlledInputChange = (event) => {
@@ -36,19 +27,24 @@ export const MessageForm = () => {
     const handleClickSaveMessage = (event) => {
         //Prevent the browser from submitting the form
         event.preventDefault() 
-    
-        //Save the new message by invoking addMessage passing message as an argument.
-        addMessage(message)
-        //once saved, reset State to the default
-        .then(() => {
-          const defaultMessage = {
-            message: "",
-            userId: parseInt(localStorage.getItem("nutshell_user"))
-          }
-          setMessage(defaultMessage)
-        })
-        // Then run getMessages
-        .then(getMessages)
+
+        if (message.id) {
+            editMessage(message)
+            .then(setEditMessageId(0))
+        }
+        else {
+            //Save the new message by invoking addMessage passing message as an argument.
+            addMessage(message)
+            //once saved, reset State to the default
+            .then(() => {
+                const defaultMessage = {
+                    message: "",
+                    userId: +(localStorage.getItem("nutshell_user"))
+                }
+                setMessage(defaultMessage)
+            })
+            .then(getMessages)
+        }
     }
   
     // return the JSX form
