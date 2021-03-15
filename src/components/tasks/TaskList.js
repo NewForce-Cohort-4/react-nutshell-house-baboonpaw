@@ -16,7 +16,6 @@ export const TaskList = () => {
   };
 
   useEffect(() => {
-    console.log("TaskList: useEffect - getTasks");
     getTasks();
   }, []);
 
@@ -48,7 +47,7 @@ export const TaskList = () => {
   return (
     <div className="tasks">
       <button
-        className="btn btn-primary"
+        className="btn btn-primary completed-btn"
         onClick={(event) => {
           event.preventDefault(); // Prevent browser from submitting the form and refreshing the page
           handleCompletedToggle();
@@ -61,7 +60,7 @@ export const TaskList = () => {
           return (
             <form>
               <fieldset>
-                <div className="form-group">
+                <div className="form-group taskForm">
                   <label htmlFor="taskName">Task: </label>
                   <input
                     type="text"
@@ -99,7 +98,7 @@ export const TaskList = () => {
                   handleSaveTask();
                 }}
               >
-                {<>Save Task</>}
+                Save Task
               </button>
             </form>
           );
@@ -117,7 +116,6 @@ export const TaskList = () => {
                   name="completed"
                   defaultChecked={task.completed}
                   onChange={() => {
-                    console.log(task.id);
                     getTaskById(task.id).then((task) => {
                       setTask(task);
                       handleCheckBox(task);
@@ -130,7 +128,7 @@ export const TaskList = () => {
               </div>
 
               <button
-                className="btn btn-primary"
+                className="btn btn-primary edit-btn"
                 onClick={() => {
                   setTaskToEditId(task.id);
                   getTaskById(task.id).then((task) => {
@@ -156,7 +154,6 @@ export const TaskList = () => {
                   name="completed"
                   defaultChecked={task.completed}
                   onChange={() => {
-                    console.log(task.id);
                     getTaskById(task.id).then((task) => {
                       setTask(task);
                       handleCheckBox(task);
@@ -169,7 +166,7 @@ export const TaskList = () => {
               </div>
 
               <button
-                className="btn btn-primary"
+                className="btn btn-primary edit-btn"
                 onClick={() => {
                   setTaskToEditId(task.id);
                   getTaskById(task.id).then((task) => {
