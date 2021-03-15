@@ -54,7 +54,7 @@ export const ArticleForm = () => {
           synopsis: article.synopsis,
           url: article.url
         })
-        .then(() => history.push(`/articles/edit/${article.id}`))
+        .then(() => history.push("/articles/"))
       } else {
         // POST - add
         addArticle(article)
@@ -81,22 +81,22 @@ export const ArticleForm = () => {
       <fieldset>
         <div className="form-group">
           <label htmlFor="title">Article title: </label>
-          <input type="text" id="title" name="title" required autoFocus className="form-control" placeholder="Article title" onChange={handleControlledInputChange}/>
+          <input type="text" id="title" name="title" required autoFocus className="form-control" placeholder="Article title" onChange={handleControlledInputChange} defaultValue={article.title}/>
         </div>
       </fieldset>
       <fieldset>
         <div className="form-group">
           <label htmlFor="synopsis">Synopsis: </label>
-          <input type="textarea" id="synopsis" name="synopsis" required className="form-control" onChange={handleControlledInputChange}/>
+          <input type="textarea" id="synopsis" name="synopsis" required className="form-control" onChange={handleControlledInputChange} defaultValue={article.synopsis}/>
         </div>
       </fieldset>
       <fieldset>
         <div className="form-group">  
           <label htmlFor="url">URL: </label>
-          <input type="url" id="url" name="url" className="form-control" required onChange={handleControlledInputChange}/>
+          <input type="url" id="url" name="url" className="form-control" required onChange={handleControlledInputChange} defaultValue={article.url}/>
         </div>
       </fieldset>
-      <button className="btn btn-primary" disabled={isLoading} onClick={event => {
+      <button className="btn btn-primary" onClick={event => {
         event.preventDefault()
         handleSaveArticle()
       }}>

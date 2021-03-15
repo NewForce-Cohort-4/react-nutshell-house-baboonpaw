@@ -10,18 +10,16 @@ import {useHistory} from "react-router-dom"
 
 export const ArticleList = () => {
   // This state changes when getArticles is invoked below
-  const {articles, getArticlesById, deleteArticle, updateArticle} = useContext(ArticleContext)
+  const {articles, getArticles, getArticlesById, deleteArticle, updateArticle} = useContext(ArticleContext)
+  // since you are no longer always displaying all of the articles
   const [filteredArticles, setFiltered] = useState([])
-
   const history = useHistory()
-
- 
 
   // useEffect - empty dependency array - useEffect only runs after first render
   useEffect(() => {
     console.log("ArticleList: useEffect - getArticles")
-    getArticlesById()
-    console.log(getArticlesById)
+    getArticles()
+    console.log(getArticles)
   }, [])
 
   useEffect(() => {
