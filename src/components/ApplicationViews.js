@@ -36,20 +36,6 @@ export const ApplicationViews = () => {
             // Remove null and return the component which will show list of friends
           }}
         />
-      
-      <TaskProvider>
-        <Route
-          path="/tasks" render={props => {
-            return (
-            <>
-            <TaskForm/> 
-            <TaskList />
-            </>
-            ) 
-            
-          }}
-        />
-      </TaskProvider>
 
       <EventProvider>
         <Route
