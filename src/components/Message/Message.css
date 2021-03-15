@@ -21,6 +21,53 @@ main {
     flex-direction: column-reverse;
 }
 
+.message-container {
+    display: flex;
+    width: 100%;
+}
+
+.user-message, .other-message {
+    display: flex;
+    align-items: center;
+    width: 80%; 
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0.25em;
+}
+
+.user-message {
+    justify-content: flex-end;
+    border: 1px solid lightblue;
+    background-color: lightblue;
+    margin-left: 5px;
+}
+
+.other-message {
+    justify-content: flex-start;
+    border: 1px solid lightgreen;
+    background-color: lightgreen;
+    margin-right: 5px;
+}
+
+.user-message p, .other-message p {
+    margin-bottom: 0;
+}
+
+.buffer {
+    width: 50%;
+}
+
+.edit-button-container {
+    display: flex;
+    align-items: center;
+}
+
+.edit-button {
+    height: 3vh;
+    padding-bottom: 2px;
+}
+
 /* Set width of message form to same width as messages list */
 .form-container {
     width: 50vw;

@@ -74,7 +74,7 @@ export const TaskList = () => {
         {showCompleted ? <>Show To-Do List</> : <>Show Completed Tasks</>}
       </button>
       <div className="progressDiv" style={{ width: "100%" }}>
-        <label for="taskProgress" className="progressLabel">Task progress: </label>
+        <label htmlFor="taskProgress" className="progressLabel">Task progress: </label>
         <progress
           id="taskProgress"
           value={calculateCompleted()}
@@ -188,7 +188,7 @@ export const TaskList = () => {
                     });
                   }}
                 />
-                <label class="form-check-label" htmlFor="completed">
+                <label className="form-check-label" htmlFor="completed">
                   {task.completed ? <>Mark Incomplete</> : <>Mark Completed</>}
                 </label>
               </div>
