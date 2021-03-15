@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { TaskContext } from "./TaskProvider";
 
 import { useHistory, useParams } from "react-router-dom";
-
+import "./Task.css"
 
 //Builds form to allow user to create a new object for tasks, saves task to database
 export const TaskForm = () => {
@@ -117,9 +117,16 @@ export const TaskForm = () => {
 
   } else {
     return (
-      <div>
-        <button className="btn btn-primary" onClick={(event)=> {event.preventDefault();handleShowForm()}}>
-          Add Task
+      <div className="card">
+        <button
+          className="btn btn-secondary"
+          id="add-task-btn"
+          onClick={(event) => {
+            event.preventDefault();
+            handleShowForm();
+          }}
+        >
+          +
         </button>
       </div>
     );

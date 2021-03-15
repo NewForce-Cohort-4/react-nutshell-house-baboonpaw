@@ -9,6 +9,9 @@ import { TaskList } from "../components/tasks/TaskList";
 import { TaskProvider } from "../components/tasks/TaskProvider";
 import { MessageProvider } from "./Message/MessageProvider"
 import { MessageList } from "./Message/MessageList"
+import {ArticleList} from "./articles/ArticleListView"
+import {ArticleProvider} from "./articles/ArticleProvider"
+import {ArticleForm} from "./articles/ArticleSaveForm"
 
 export const ApplicationViews = () => {
   return (
@@ -33,12 +36,6 @@ export const ApplicationViews = () => {
             // Remove null and return the component which will show list of friends
           }}
         />
-
-        <MessageProvider>
-            <Route exact path="/messages">
-                <MessageList />
-            </Route>
-        </MessageProvider>
       
       <TaskProvider>
         <Route
@@ -67,9 +64,30 @@ export const ApplicationViews = () => {
         />
       </EventProvider>
       
-      </>
-
+      <ArticleProvider>
+        <Route exact path="/articles">
+          <ArticleList />
+        </Route>
+        <Route exact path="/articles/create">
+          <ArticleForm />
+        </Route>
+      </ArticleProvider>
+      {/* Render the animal list when http://localhost:3000/messages */}
+      <MessageProvider>
+        <Route exact path="/messages">
+          <MessageList />
+        </Route>
+      </MessageProvider>
+      <TaskProvider>
+        <Route exact path="/tasks">
+          <TaskList />
+          <TaskForm />
+        </Route>
+      </TaskProvider>
+    </>
   );
- }
+}  
+
+
 
 

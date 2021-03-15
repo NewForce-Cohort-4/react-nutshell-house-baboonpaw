@@ -16,7 +16,6 @@ export const TaskList = () => {
   };
 
   useEffect(() => {
-    console.log("TaskList: useEffect - getTasks");
     getTasks();
   }, []);
 
@@ -45,10 +44,28 @@ export const TaskList = () => {
     getTasks()
   }
 
+  const calculateCompleted = () => {
+    let completed = []
+    let value 
+    tasks.forEach((task) => {
+      
+      if(task.completed === true) {
+        completed.push(task)
+      }
+      
+    })
+    console.log(completed);
+    let completedValue = completed.length
+    let tasksValue = tasks.length
+    value = (completedValue / tasksValue) * 100
+    return value
+  }
+
+
   return (
     <div className="tasks">
       <button
-        className="btn btn-primary"
+        className="btn btn-primary completed-btn"
         onClick={(event) => {
           event.preventDefault(); // Prevent browser from submitting the form and refreshing the page
           handleCompletedToggle();
@@ -56,12 +73,22 @@ export const TaskList = () => {
       >
         {showCompleted ? <>Show To-Do List</> : <>Show Completed Tasks</>}
       </button>
+      <div className="progressDiv" style={{ width: "100%" }}>
+        <label for="taskProgress" className="progressLabel">Task progress: </label>
+        <progress
+          id="taskProgress"
+          value={calculateCompleted()}
+          max="100"
+          style={{ width: "85%" }}
+        ></progress>
+        <span className="progressSpan">{Math.round(calculateCompleted())}%</span>
+      </div>
       {tasks.map((task) => {
         if (task.id === taskToEditId) {
           return (
             <form>
               <fieldset>
-                <div className="form-group">
+                <div className="form-group taskForm">
                   <label htmlFor="taskName">Task: </label>
                   <input
                     type="text"
@@ -99,7 +126,7 @@ export const TaskList = () => {
                   handleSaveTask();
                 }}
               >
-                {<>Save Task</>}
+                Save Task
               </button>
             </form>
           );
@@ -117,20 +144,19 @@ export const TaskList = () => {
                   name="completed"
                   defaultChecked={task.completed}
                   onChange={() => {
-                    console.log(task.id);
                     getTaskById(task.id).then((task) => {
                       setTask(task);
                       handleCheckBox(task);
                     });
                   }}
                 />
-                <label class="form-check-label" htmlFor="completed">
+                <label className="form-check-label" htmlFor="completed">
                   {task.completed ? <>Mark Incomplete</> : <>Mark Completed</>}
                 </label>
               </div>
 
               <button
-                className="btn btn-primary"
+                className="btn btn-primary edit-btn"
                 onClick={() => {
                   setTaskToEditId(task.id);
                   getTaskById(task.id).then((task) => {
@@ -156,7 +182,6 @@ export const TaskList = () => {
                   name="completed"
                   defaultChecked={task.completed}
                   onChange={() => {
-                    console.log(task.id);
                     getTaskById(task.id).then((task) => {
                       setTask(task);
                       handleCheckBox(task);
@@ -169,7 +194,7 @@ export const TaskList = () => {
               </div>
 
               <button
-                className="btn btn-primary"
+                className="btn btn-primary edit-btn"
                 onClick={() => {
                   setTaskToEditId(task.id);
                   getTaskById(task.id).then((task) => {
