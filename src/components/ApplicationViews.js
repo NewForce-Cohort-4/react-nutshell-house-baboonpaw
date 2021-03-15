@@ -8,7 +8,7 @@ import { MessageList } from "./Message/MessageList"
 import { TaskForm } from "./tasks/TaskForm";
 import { TaskList } from "./tasks/TaskList";
 import { TaskProvider } from "./tasks/TaskProvider";
-
+import "./tasks/Task.css"
 export const ApplicationViews = () => {
   return (
     <>
@@ -29,10 +29,13 @@ export const ApplicationViews = () => {
           <MessageList />
         </Route>
       </MessageProvider>
+
       <TaskProvider>
         <Route exact path="/tasks">
-          <TaskList />
-          <TaskForm />
+          <div className="taskMainContainer">
+            <TaskList />
+            <TaskForm />
+          </div>
         </Route>
       </TaskProvider>
     </>
