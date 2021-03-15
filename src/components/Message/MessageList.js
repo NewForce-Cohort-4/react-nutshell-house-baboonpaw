@@ -54,7 +54,7 @@ export const MessageList = () => {
                             // console.log(typeof localStorage.getItem("nutshell_user"))
                             if (EditMessageId === message.id) {
                                 // setEditMessageId(0)
-                                return <MessageForm />
+                                return <MessageForm  />
                             }
                             else if (message.userId === +localStorage.getItem("nutshell_user")) {
                                 return (

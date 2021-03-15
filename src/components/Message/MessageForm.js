@@ -14,6 +14,11 @@ export const MessageForm = () => {
         userId: parseInt(localStorage.getItem("nutshell_user"))
     });
 
+    // if (edit) {
+    //     // Set initial State
+    //     setMessage(existingMessage)
+    // } 
+
     // Use the useEffect hook to invoke the MessageProvider API GET call to retrieve messages data
     useEffect(() => {
         getMessages()
