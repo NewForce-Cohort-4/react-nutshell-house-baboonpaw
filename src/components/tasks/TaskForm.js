@@ -117,7 +117,7 @@ export const TaskForm = () => {
 
   } else {
     return (
-      <div class="card">
+      <div className="card">
         <button
           className="btn btn-secondary"
           id="add-task-btn"

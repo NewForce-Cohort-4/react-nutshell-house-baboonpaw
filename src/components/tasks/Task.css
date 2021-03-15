@@ -19,3 +19,29 @@
 .completed-btn {
   background-color: rgba(89, 159, 216, 0.938);
 }
+
+.progressSpan {
+  margin-left: 1em;
+  font-weight: bolder;
+  font-size: large;
+}
+
+.progressLabel {
+  margin-right: 1em;
+}
+
+#taskProgress {
+  background-color: #f3f3f3;
+  border: 0;
+  height: 18px;
+  border-radius: 9px;
+}
+
+#taskProgress::-webkit-progress-value {
+  background-color: rgba(89, 159, 216, 0.938)
+}
+
+.progressDiv {
+  margin: 1em 0;
+  text-justify: center;
+}
