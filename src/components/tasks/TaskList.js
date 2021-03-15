@@ -60,7 +60,7 @@ export const TaskList = () => {
           return (
             <form>
               <fieldset>
-                <div className="form-group">
+                <div className="form-group taskForm">
                   <label htmlFor="taskName">Task: </label>
                   <input
                     type="text"

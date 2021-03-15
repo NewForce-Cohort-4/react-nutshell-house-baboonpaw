@@ -3,7 +3,7 @@
 /* .tasks{
   background-color: darkgrey;
 } */
-* {
+.tasks, .taskForm {
   font-family: 'Blinker', sans-serif;
 }
 
