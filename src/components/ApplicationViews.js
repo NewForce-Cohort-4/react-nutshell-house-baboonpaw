@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import {ArticleList} from "./articles/ArticleListView"
 import {ArticleProvider} from "./articles/ArticleProvider"
 import {ArticleForm} from "./articles/ArticleSaveForm"
+import {ArticleDetails} from "./articles/ArticleDetails"
 import { MessageProvider } from "./Message/MessageProvider"
 import { MessageList } from "./Message/MessageList"
 import { TaskForm } from "./tasks/TaskForm";
@@ -22,6 +23,9 @@ export const ApplicationViews = () => {
         </Route>
         <Route exact path="/articles/edit/:articleId(\d+)">
           <ArticleForm />
+        </Route>
+        <Route exact path="/articles/detail/:articleId(\d+)">
+          <ArticleDetails />
         </Route>
       </ArticleProvider>
         {/* Render the animal list when http://localhost:3000/messages */}
