@@ -14,7 +14,7 @@
       "id": 1,
       "name": "Bill",
       "completionDate": "1/1/2019",
-      "completed": false
+      "completed": true
     },
     {
       "id": 2,
@@ -26,19 +26,19 @@
       "id": 3,
       "name": "Task 2",
       "completionDate": "2/1/2022",
-      "completed": false
+      "completed": true
     },
     {
       "id": 4,
       "name": "Task 4",
       "completionDate": "1/1/2018",
-      "completed": false
+      "completed": true
     },
     {
       "id": 5,
       "name": "Task 5",
       "completionDate": "5/21/2015",
-      "completed": false
+      "completed": true
     },
     {
       "id": 6,
@@ -47,10 +47,10 @@
       "completed": false
     },
     {
+      "id": 7,
       "name": "Task 2",
       "completionDate": "1/1/2021",
-      "completed": false,
-      "id": 7
+      "completed": false
     }
   ],
   "messages": []

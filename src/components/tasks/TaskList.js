@@ -132,7 +132,7 @@ export const TaskList = () => {
           );
         } else if (showCompleted === false && task.completed === false) {
           return (
-            <section className="card text-justify text-center">
+            <section className="card text-justify text-center taskContainer">
               <h3 className="task__name">{task.name}</h3>
               <div className="task_date">
                 <strong>Completion Date:</strong> {task.completionDate}
@@ -170,7 +170,7 @@ export const TaskList = () => {
           );
         } else if (showCompleted === true && task.completed === true) {
           return (
-            <section className="card text-justify text-center">
+            <section className="card text-justify text-center taskContainer">
               <h3 className="task__name">{task.name}</h3>
               <div className="task_date">
                 <strong>Completion Date:</strong> {task.completionDate}
