@@ -25,6 +25,7 @@ export const ApplicationViews = () => {
           <ArticleForm />
         </Route>
         <Route exact path="/articles/detail/:articleId(\d+)">
+          <ArticleList />
           <ArticleDetails />
         </Route>
       </ArticleProvider>

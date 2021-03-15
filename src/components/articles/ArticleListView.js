@@ -21,6 +21,7 @@ export const ArticleList = () => {
   useEffect(() => {
     console.log("ArticleList: useEffect - getArticles")
     getArticlesById()
+    console.log(getArticlesById)
   }, [])
 
   useEffect(() => {
