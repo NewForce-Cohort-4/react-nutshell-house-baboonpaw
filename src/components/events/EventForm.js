@@ -1,3 +1,5 @@
+//Author: Sophia Spaulding
+ 
 import React, { useContext, useEffect, useState } from "react";
 import { EventContext } from "./EventProvider";
 import "./Events.css"
