@@ -1,0 +1,24 @@
+.articles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.article-card {
+  border: 2px solid rgb(104, 103, 101);
+  background-color: rgb(179, 245, 223);
+  margin: 1em;
+  padding: 1em;
+}
+
+.articles-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.title {
+  margin-top: 2em;
+}

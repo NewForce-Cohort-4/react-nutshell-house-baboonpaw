@@ -7,6 +7,7 @@ import React, {useContext, useEffect, useState} from "react"
 import {ArticleContext} from "./ArticleProvider"
 import {ArticleCard} from "./ArticleCard"
 import {useHistory} from "react-router-dom"
+import "./Articles.css"
 
 export const ArticleList = () => {
   // This state changes when getArticles is invoked below
@@ -37,20 +38,21 @@ export const ArticleList = () => {
   }
 
   return (
-    <>
-      <h2>Articles</h2>
+    <div className="articles-tab">
+      <h1 className="title">Articles</h1>
+      <div className="articles">
         {console.log("AnimalList: Render", articles)}
         {
             filteredArticles.map(article => {
               console.log(article)
-              return (<ArticleCard key={article.id} article={article} deleteFn={handleDeletion(article.id)} editFn={handleEdit(article.id)}
+              return (<ArticleCard key={article.id} article={article} deleteFn={handleDeletion(article.id)} editFn={handleEdit(article.id)} 
                 /> )
               })
         }
-          
-      <button onClick={() => {history.push("/articles/create")}}>
+      </div>  
+      <button className="btn btn-primary" onClick={() => {history.push("/articles/create")}}>
         New Article
       </button>
-    </>
+    </div>
   )
 }

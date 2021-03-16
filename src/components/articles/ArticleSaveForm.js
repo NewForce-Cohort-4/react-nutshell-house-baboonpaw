@@ -1,6 +1,7 @@
 import React, {useContext, useState, useEffect} from "react"
 import {ArticleContext} from "./ArticleProvider"
 import {useHistory, useParams} from "react-router-dom"
+import "./Articles.css"
 
 export const ArticleForm = () => {
   const {addArticle, getArticlesById, updateArticle} = useContext(ArticleContext)
