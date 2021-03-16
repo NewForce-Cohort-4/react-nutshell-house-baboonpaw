@@ -6,7 +6,7 @@ import "./Events.css"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const EventForm = () => {
-    const { addEvent, getEvents, getEventById } = useContext(EventContext)
+    const { addEvent, getEvents, getEventById, updateEvent } = useContext(EventContext)
 
     //Define the intial state of the form inputs with useState()
 
@@ -60,27 +60,6 @@ export const EventForm = () => {
     });
     };
 
-    const handleClickSaveEvent = () => {
-          if (event.name && event.date && event.location){
-              addEvent({
-                  id: showForm,
-                  name: event.name,
-                  date: event.date,
-                  location: event.location
-              });
-              setShowForm(false);
-              setEvent({})
-              
-          }
-          else{
-            //invoke addEvent passing events as an argument.
-            //once complete, change the url and display the event list
-            addEvent(event)
-          .then(() => history.push("/events"))
-          }
-      
-    }
-    
     const handleShowForm = () => {
         setShowForm(true)
       }
@@ -121,6 +100,7 @@ export const EventForm = () => {
     } 
     else {
         return (
+            <>
             <div>
                 <button className ="btn btn-primary" 
                 onClick={(event) => {
@@ -130,6 +110,7 @@ export const EventForm = () => {
                     Add Event
                 </button>
             </div>
+            </>
         )
     }
 
