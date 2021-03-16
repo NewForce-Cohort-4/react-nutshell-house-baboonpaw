@@ -6,7 +6,8 @@ import "./Message.css"
 
 export const MessageList = () => {
     // retrieve function and array from Provider
-    const { getMessages, messages } = useContext(MessageContext)
+    const { messages, getMessages, deleteMessage } = useContext(MessageContext)
+    const [EditMessageId, setEditMessageId] = useState(0)
 
     // Initialization effect hook -> Go get messages data
     useEffect(()=>{
@@ -21,13 +22,21 @@ export const MessageList = () => {
                 <div className="messages">
                     {
                         messages.map(message => {
-                            return <Message key={message.id} message={message} />})
+
+                            if (EditMessageId === message.id) {
+                                // setEditMessageId(0)
+                                return <MessageForm key={message.id} existingMessage={message} setEditMessageId={setEditMessageId} />
+                            }
+                            
+                            return <Message key={message.id} message={message} setEditMessageId={setEditMessageId}/>
+                        })
                     }
                 </div>
                 <div className="form-container">
-                    <MessageForm />
+                    <MessageForm existingMessage={{message: "", userId:+localStorage.getItem("nutshell_user")}} />
                 </div>
             </main>
+            
         </>
     )
 }
